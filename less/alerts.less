@@ -13,9 +13,9 @@
   border-radius: @alert-border-radius;
 
   // Headings for larger alerts
-  h4 {
+  .alert-title {
     margin-top: 0;
-    // Specified for the h4 to prevent conflicts of changing @headings-color
+    // Specified for the .alert-title to prevent conflicts of changing @headings-color
     color: inherit;
   }
   // Provide class for links that match alerts
@@ -25,7 +25,7 @@
 
   // Improve alignment and spacing of inner content
   > p,
-  > ul {
+  > .alert-list {
     margin-bottom: 0;
   }
   > p + p {

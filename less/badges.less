@@ -34,7 +34,7 @@
   }
 
   // Hover state, but only for links
-  a& {
+  .badge-link {
     &:hover,
     &:focus {
       color: @badge-link-hover-color;
@@ -44,12 +44,13 @@
   }
 
   // Account for badges in navs
-  a.list-group-item.active > &,
-  .nav-pills > .active > a > & {
+  .list-group-item.active > .badge,
+  .nav-pills > .active > a > .badge {
     color: @badge-active-color;
     background-color: @badge-active-bg;
   }
-  .nav-pills > li > a > & {
+
+  .nav-pills > li > a > .badge {
     margin-left: 3px;
   }
 }

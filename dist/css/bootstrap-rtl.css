@@ -5397,8 +5397,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   border-radius: .25em;
 }
 
-.label[href]:hover,
-.label[href]:focus {
+a.label:hover,
+a.label:focus {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
@@ -5496,20 +5496,20 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 1px 5px;
 }
 
-a.badge:hover,
-a.badge:focus {
+.badge .badge-link:hover,
+.badge .badge-link:focus {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
 
-a.list-group-item.active > .badge,
-.nav-pills > .active > a > .badge {
+.badge .list-group-item.active > .badge,
+.badge .nav-pills > .active > a > .badge {
   color: #428bca;
   background-color: #fff;
 }
 
-.nav-pills > li > a > .badge {
+.badge .nav-pills > li > a > .badge {
   margin-right: 3px;
 }
 
@@ -5597,7 +5597,7 @@ a.thumbnail.active {
   border-radius: 4px;
 }
 
-.alert h4 {
+.alert .alert-title {
   margin-top: 0;
   color: inherit;
 }
@@ -5607,7 +5607,7 @@ a.thumbnail.active {
 }
 
 .alert > p,
-.alert > ul {
+.alert > .alert-list {
   margin-bottom: 0;
 }
 

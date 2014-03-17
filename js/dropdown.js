@@ -7,7 +7,7 @@
  * ======================================================================== */
 
 
-+function ($) {
++(function ($) {
   'use strict';
 
   // DROPDOWN CLASS DEFINITION
@@ -63,8 +63,8 @@
     var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
 
-    if (!isActive || (isActive && e.keyCode == 27)) {
-      if (e.which == 27) $parent.find(toggle).trigger('focus')
+    if (!isActive || (isActive && e.keyCode === 27)) {
+      if (e.which === 27) $parent.find(toggle).trigger('focus')
       return $this.trigger('click')
     }
 
@@ -75,9 +75,9 @@
 
     var index = $items.index($items.filter(':focus'))
 
-    if (e.keyCode == 38 && index > 0)                 index--                        // up
-    if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
-    if (!~index)                                      index = 0
+    if (e.keyCode === 38 && index > 0)                 index--                        // up
+    if (e.keyCode === 40 && index < $items.length - 1) index++                        // down
+    if (!~index)                                       index = 0
 
     $items.eq(index).trigger('focus')
   }
@@ -119,7 +119,7 @@
       var data  = $this.data('bs.dropdown')
 
       if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
-      if (typeof option == 'string') data[option].call($this)
+      if (typeof option === 'string') data[option].call($this)
     })
   }
 
@@ -144,4 +144,4 @@
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle + ', [role="menu"], [role="listbox"]', Dropdown.prototype.keydown)
 
-}(jQuery);
+})(jQuery);

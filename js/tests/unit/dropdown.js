@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('dropdowns')
 
@@ -28,8 +29,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+        '</ul>'
+    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
 
     ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
   })
@@ -45,8 +46,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+        '</ul>'
+    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
 
     ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
   })
@@ -62,8 +63,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+        '</ul>'
+    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
 
     ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
   })
@@ -79,8 +80,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+        '</ul>'
+    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
 
     ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
   })
@@ -97,8 +98,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML)
+        '</ul>'
+    var dropdown = $(dropdownHTML)
           .appendTo('#qunit-fixture')
           .find('[data-toggle="dropdown"]')
           .dropdown()
@@ -126,22 +127,22 @@ $(function () {
         '    <ul class="dropdown-menu">' +
         '        <li><a href="#">Action 1</a></li>' +
         '    </ul>' +
-        '</div>',
-        dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]'),
-        first = dropdowns.first(),
-        last = dropdowns.last()
+        '</div>'
+    var dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]')
+    var first = dropdowns.first()
+    var last = dropdowns.last()
 
-    ok(dropdowns.length == 2, 'Should be two dropdowns')
+    ok(dropdowns.length === 2, 'Should be two dropdowns')
 
     first.click()
-    ok(first.parents('.open').length == 1, 'open class added on click')
-    ok($('#qunit-fixture .open').length == 1, 'only one object is open')
+    ok(first.parents('.open').length === 1, 'open class added on click')
+    ok($('#qunit-fixture .open').length === 1, 'only one object is open')
     $('body').click()
     ok($('#qunit-fixture .open').length === 0, 'open class removed')
 
     last.click()
-    ok(last.parent('.open').length == 1, 'open class added on click')
-    ok($('#qunit-fixture .open').length == 1, 'only one object is open')
+    ok(last.parent('.open').length === 1, 'open class added on click')
+    ok($('#qunit-fixture .open').length === 1, 'only one object is open')
     $('body').click()
     ok($('#qunit-fixture .open').length === 0, 'open class removed')
 
@@ -159,8 +160,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML)
+        '</ul>'
+    var dropdown = $(dropdownHTML)
           .appendTo('#qunit-fixture')
           .find('[data-toggle="dropdown"]')
           .dropdown()
@@ -193,8 +194,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML)
+        '</ul>'
+    var dropdown = $(dropdownHTML)
           .appendTo('#qunit-fixture')
           .find('[data-toggle="dropdown"]')
           .dropdown()

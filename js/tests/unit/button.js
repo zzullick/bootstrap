@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('button')
 
@@ -13,7 +14,7 @@ $(function () {
   })
 
   test('should return element', function () {
-    ok($(document.body).button()[0] == document.body, 'document.body returned')
+    ok($(document.body).button()[0] === document.body, 'document.body returned')
   })
 
   test('should return set state to loading', function () {
@@ -59,8 +60,8 @@ $(function () {
   })
 
   test('should toggle active when btn children are clicked', function () {
-    var btn = $('<button class="btn" data-toggle="button">mdo</button>'),
-        inner = $('<i></i>')
+    var btn = $('<button class="btn" data-toggle="button">mdo</button>')
+    var inner = $('<i></i>')
     btn
       .append(inner)
       .appendTo($('#qunit-fixture'))
@@ -70,9 +71,9 @@ $(function () {
   })
 
   test('should toggle active when btn children are clicked within btn-group', function () {
-    var btngroup = $('<div class="btn-group" data-toggle="buttons"></div>'),
-        btn = $('<button class="btn">fat</button>'),
-        inner = $('<i></i>')
+    var btngroup = $('<div class="btn-group" data-toggle="buttons"></div>')
+    var btn = $('<button class="btn">fat</button>')
+    var inner = $('<i></i>')
     btngroup
       .append(btn.append(inner))
       .appendTo($('#qunit-fixture'))
@@ -98,7 +99,6 @@ $(function () {
 
     var btn1 = $(group.children()[0])
     var btn2 = $(group.children()[1])
-    var btn3 = $(group.children()[2])
 
     group.appendTo($('#qunit-fixture'))
 

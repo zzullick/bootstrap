@@ -7,7 +7,7 @@
  * ======================================================================== */
 
 
-+function ($) {
++(function ($) {
   'use strict';
 
   // BUTTON PUBLIC CLASS DEFINITION
@@ -37,7 +37,7 @@
 
     // push to event loop to allow forms to submit
     setTimeout($.proxy(function () {
-      if (state == 'loadingText') {
+      if (state === 'loadingText') {
         this.isLoading = true
         $el.addClass(d).attr(d, d)
       } else if (this.isLoading) {
@@ -53,7 +53,7 @@
 
     if ($parent.length) {
       var $input = this.$element.find('input')
-      if ($input.prop('type') == 'radio') {
+      if ($input.prop('type') === 'radio') {
         if ($input.prop('checked') && this.$element.hasClass('active')) changed = false
         else $parent.find('.active').removeClass('active')
       }
@@ -73,11 +73,11 @@
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.button')
-      var options = typeof option == 'object' && option
+      var options = typeof option === 'object' && option
 
       if (!data) $this.data('bs.button', (data = new Button(this, options)))
 
-      if (option == 'toggle') data.toggle()
+      if (option === 'toggle') data.toggle()
       else if (option) data.setState(option)
     })
   }
@@ -104,4 +104,4 @@
     e.preventDefault()
   })
 
-}(jQuery);
+})(jQuery);

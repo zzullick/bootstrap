@@ -7,7 +7,7 @@
  * ======================================================================== */
 
 
-+function ($) {
++(function ($) {
   'use strict';
 
   // TAB CLASS DEFINITION
@@ -92,13 +92,13 @@
 
   var old = $.fn.tab
 
-  $.fn.tab = function ( option ) {
+  $.fn.tab = function (option) {
     return this.each(function () {
       var $this = $(this)
       var data  = $this.data('bs.tab')
 
       if (!data) $this.data('bs.tab', (data = new Tab(this)))
-      if (typeof option == 'string') data[option]()
+      if (typeof option === 'string') data[option]()
     })
   }
 
@@ -122,4 +122,4 @@
     $(this).tab('show')
   })
 
-}(jQuery);
+})(jQuery);

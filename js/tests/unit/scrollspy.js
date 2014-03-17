@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('scrollspy')
 
@@ -13,13 +14,13 @@ $(function () {
   })
 
   test('should return element', function () {
-    ok($(document.body).scrollspy()[0] == document.body, 'document.body returned')
+    ok($(document.body).scrollspy()[0] === document.body, 'document.body returned')
   })
 
   test('should switch active class on scroll', function () {
-    var sectionHTML = '<div id="masthead"></div>',
-        $section = $(sectionHTML).append('#qunit-fixture'),
-        topbarHTML = '<div class="topbar">' +
+    var sectionHTML = '<div id="masthead"></div>'
+    $(sectionHTML).append('#qunit-fixture')
+    var topbarHTML = '<div class="topbar">' +
         '<div class="topbar-inner">' +
         '<div class="container">' +
         '<h3><a href="#">Bootstrap</a></h3>' +
@@ -27,8 +28,8 @@ $(function () {
         '</ul>' +
         '</div>' +
         '</div>' +
-        '</div>',
-        $topbar = $(topbarHTML).scrollspy()
+        '</div>'
+    var $topbar = $(topbarHTML).scrollspy()
 
     ok($topbar.find('.active', true))
   })
@@ -59,12 +60,12 @@ $(function () {
         '</p>' +
         '</div>' +
         '</div>' +
-        '</div>',
-        $section = $(sectionHTML).appendTo('#qunit-fixture'),
-        $scrollSpy = $section
+        '</div>'
+    var $section = $(sectionHTML).appendTo('#qunit-fixture')
+    var $scrollSpy = $section
         .show()
         .find('#scrollspy-example')
-        .scrollspy({target: '#ss-target'})
+        .scrollspy({ target: '#ss-target' })
 
     $scrollSpy.scrollTop(350);
     ok($section.hasClass('active'), 'Active class still on root node')

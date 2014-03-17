@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('tabs')
 
@@ -13,7 +14,7 @@ $(function () {
   })
 
   test('should return element', function () {
-    ok($(document.body).tab()[0] == document.body, 'document.body returned')
+    ok($(document.body).tab()[0] === document.body, 'document.body returned')
   })
 
   test('should activate element by tab id', function () {

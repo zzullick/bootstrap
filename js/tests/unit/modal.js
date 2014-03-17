@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('modal')
 
@@ -15,7 +16,7 @@ $(function () {
 
   test('should return element', function () {
     var div = $('<div id="modal-test"></div>')
-    ok(div.modal() == div, 'document.body returned')
+    ok(div.modal() === div, 'document.body returned')
     $('#modal-test').remove()
   })
 

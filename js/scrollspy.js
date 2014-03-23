@@ -123,8 +123,12 @@
       var data    = $this.data('bs.scrollspy')
       var options = typeof option === 'object' && option
 
-      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
-      if (typeof option === 'string') data[option]()
+      if (!data) {
+        $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+      }
+      if (typeof option === 'string') {
+        data[option]()
+      }
     })
   }
 

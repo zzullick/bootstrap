@@ -29,7 +29,9 @@
 
     var $parent = $(selector)
 
-    if (e) e.preventDefault()
+    if (e) {
+      e.preventDefault()
+    }
 
     if (!$parent.length) {
       $parent = $this.hasClass('alert') ? $this : $this.parent()
@@ -37,7 +39,9 @@
 
     $parent.trigger(e = $.Event('close.bs.alert'))
 
-    if (e.isDefaultPrevented()) return
+    if (e.isDefaultPrevented()) {
+      return
+    }
 
     $parent.removeClass('in')
 
@@ -63,8 +67,12 @@
       var $this = $(this)
       var data  = $this.data('bs.alert')
 
-      if (!data) $this.data('bs.alert', (data = new Alert(this)))
-      if (typeof option === 'string') data[option].call($this)
+      if (!data) {
+        $this.data('bs.alert', (data = new Alert(this)))
+      }
+      if (typeof option === 'string') {
+        data[option].call($this)
+      }
     })
   }
 

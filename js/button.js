@@ -31,7 +31,9 @@
 
     state = state + 'Text'
 
-    if (!data.resetText) $el.data('resetText', $el[val]())
+    if (!data.resetText) {
+      $el.data('resetText', $el[val]())
+    }
 
     $el[val](data[state] || this.options[state])
 
@@ -54,13 +56,20 @@
     if ($parent.length) {
       var $input = this.$element.find('input')
       if ($input.prop('type') === 'radio') {
-        if ($input.prop('checked') && this.$element.hasClass('active')) changed = false
-        else $parent.find('.active').removeClass('active')
+        if ($input.prop('checked') && this.$element.hasClass('active')) {
+          changed = false
+        } else {
+          $parent.find('.active').removeClass('active')
+        }
       }
-      if (changed) $input.prop('checked', !this.$element.hasClass('active')).trigger('change')
+      if (changed) {
+        $input.prop('checked', !this.$element.hasClass('active')).trigger('change')
+      }
     }
 
-    if (changed) this.$element.toggleClass('active')
+    if (changed) {
+      this.$element.toggleClass('active')
+    }
   }
 
 
@@ -75,10 +84,15 @@
       var data    = $this.data('bs.button')
       var options = typeof option === 'object' && option
 
-      if (!data) $this.data('bs.button', (data = new Button(this, options)))
+      if (!data) {
+        $this.data('bs.button', (data = new Button(this, options)))
+      }
 
-      if (option === 'toggle') data.toggle()
-      else if (option) data.setState(option)
+      if (option === 'toggle') {
+        data.toggle()
+      } else if (option) {
+        data.setState(option)
+      }
     })
   }
 
@@ -99,7 +113,9 @@
 
   $(document).on('click.bs.button.data-api', '[data-toggle^=button]', function (e) {
     var $btn = $(e.target)
-    if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
+    if (!$btn.hasClass('btn')) {
+      $btn = $btn.closest('.btn')
+    }
     $btn.button('toggle')
     e.preventDefault()
   })

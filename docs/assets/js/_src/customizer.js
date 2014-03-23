@@ -93,7 +93,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
       js:  $('#plugin-section input:checked').map(function () { return this.value }).toArray()
     }
 
-    if ($.isEmptyObject(data.vars) && !data.css.length && !data.js.length) return
+    if ($.isEmptyObject(data.vars) && !data.css.length && !data.js.length) {
+      return
+    }
 
     return data
   }
@@ -101,7 +103,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function parseUrl() {
     var id = getQueryParam('id')
 
-    if (!id) return
+    if (!id) {
+      return
+    }
 
     $.ajax({
       url: 'https://api.github.com/gists/' + id,
@@ -134,7 +138,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function generateZip(css, js, fonts, config, complete) {
-    if (!css && !js) return showError('<strong>Ruh roh!</strong> No Bootstrap files selected.', new Error('no Bootstrap'))
+    if (!css && !js) {
+      return showError('<strong>Ruh roh!</strong> No Bootstrap files selected.', new Error('no Bootstrap'))
+    }
 
     var zip = new JSZip()
 
@@ -228,11 +234,15 @@ window.onload = function () { // wait for load in a dumb way because B-0
       // Core stylesheets like 'normalize.less' are not included in the form
       // since disabling them would wreck everything, and so their 'fileInclude'
       // will be 'undefined'.
-      if (fileInclude || (fileInclude === null))   lessSource += __less[filename]
+      if (fileInclude || (fileInclude === null)) {
+        lessSource += __less[filename]
+      }
 
       // Custom variables are added after Bootstrap variables so the custom
       // ones take precedence.
-      if (('variables.less' === filename) && vars) lessSource += generateCustomLess(vars)
+      if (('variables.less' === filename) && vars) {
+        lessSource += generateCustomLess(vars)
+      }
     })
 
     lessSource = lessSource.replace(/@import[^\n]*/gi, '') //strip any imports
@@ -266,7 +276,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
       oneChecked = oneChecked || checked
     })
 
-    if (!oneChecked) return false
+    if (!oneChecked) {
+      return false
+    }
 
     var result = {}
     var vars = {}
@@ -291,7 +303,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function generateJavascript(preamble) {
     var $checked = $('#plugin-section input:checked')
-    if (!$checked.length) return false
+    if (!$checked.length) {
+      return false
+    }
 
     var js = $checked
       .map(function () { return __js[this.value] })
@@ -324,9 +338,13 @@ window.onload = function () { // wait for load in a dumb way because B-0
   })
 
   $('[data-dependencies]').on('click', function () {
-    if (!$(this).is(':checked')) return
+    if (!$(this).is(':checked')) {
+      return
+    }
     var dependencies = this.getAttribute('data-dependencies')
-    if (!dependencies) return
+    if (!dependencies) {
+      return
+    }
     dependencies = dependencies.split(',')
     for (var i = 0; i < dependencies.length; i++) {
       var dependency = $('[value="' + dependencies[i] + '"]')
@@ -335,9 +353,13 @@ window.onload = function () { // wait for load in a dumb way because B-0
   })
 
   $('[data-dependents]').on('click', function () {
-    if ($(this).is(':checked')) return
+    if ($(this).is(':checked')) {
+      return
+    }
     var dependents = this.getAttribute('data-dependents')
-    if (!dependents) return
+    if (!dependents) {
+      return
+    }
     dependents = dependents.split(',')
     for (var i = 0; i < dependents.length; i++) {
       var dependent = $('[value="' + dependents[i] + '"]')

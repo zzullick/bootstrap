@@ -22,7 +22,9 @@
   Dropdown.prototype.toggle = function (e) {
     var $this = $(this)
 
-    if ($this.is('.disabled, :disabled')) return
+    if ($this.is('.disabled, :disabled')) {
+      return
+    }
 
     var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
@@ -38,7 +40,9 @@
       var relatedTarget = { relatedTarget: this }
       $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
 
-      if (e.isDefaultPrevented()) return
+      if (e.isDefaultPrevented()) {
+        return
+      }
 
       $parent
         .toggleClass('open')
@@ -51,33 +55,47 @@
   }
 
   Dropdown.prototype.keydown = function (e) {
-    if (!/(38|40|27)/.test(e.keyCode)) return
+    if (!/(38|40|27)/.test(e.keyCode)) {
+      return
+    }
 
     var $this = $(this)
 
     e.preventDefault()
     e.stopPropagation()
 
-    if ($this.is('.disabled, :disabled')) return
+    if ($this.is('.disabled, :disabled')) {
+      return
+    }
 
     var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
 
     if (!isActive || (isActive && e.keyCode === 27)) {
-      if (e.which === 27) $parent.find(toggle).trigger('focus')
+      if (e.which === 27) {
+        $parent.find(toggle).trigger('focus')
+      }
       return $this.trigger('click')
     }
 
     var desc = ' li:not(.divider):visible a'
     var $items = $parent.find('[role="menu"]' + desc + ', [role="listbox"]' + desc)
 
-    if (!$items.length) return
+    if (!$items.length) {
+      return
+    }
 
     var index = $items.index($items.filter(':focus'))
 
-    if (e.keyCode === 38 && index > 0)                 index--                        // up
-    if (e.keyCode === 40 && index < $items.length - 1) index++                        // down
-    if (!~index)                                       index = 0
+    if (e.keyCode === 38 && index > 0) {
+      index--       // up
+    }
+    if (e.keyCode === 40 && index < $items.length - 1) {
+      index++       // down
+    }
+    if (!~index) {
+      index = 0
+    }
 
     $items.eq(index).trigger('focus')
   }
@@ -87,9 +105,13 @@
     $(toggle).each(function () {
       var $parent = getParent($(this))
       var relatedTarget = { relatedTarget: this }
-      if (!$parent.hasClass('open')) return
+      if (!$parent.hasClass('open')) {
+        return
+      }
       $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
-      if (e.isDefaultPrevented()) return
+      if (e.isDefaultPrevented()) {
+        return
+      }
       $parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
     })
   }
@@ -118,8 +140,12 @@
       var $this = $(this)
       var data  = $this.data('bs.dropdown')
 
-      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
-      if (typeof option === 'string') data[option].call($this)
+      if (!data) {
+        $this.data('bs.dropdown', (data = new Dropdown(this)))
+      }
+      if (typeof option === 'string') {
+        data[option].call($this)
+      }
     })
   }
 

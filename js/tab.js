@@ -27,7 +27,9 @@
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
     }
 
-    if ($this.parent('li').hasClass('active')) return
+    if ($this.parent('li').hasClass('active')) {
+      return
+    }
 
     var previous = $ul.find('.active:last a')[0]
     var e        = $.Event('show.bs.tab', {
@@ -36,7 +38,9 @@
 
     $this.trigger(e)
 
-    if (e.isDefaultPrevented()) return
+    if (e.isDefaultPrevented()) {
+      return
+    }
 
     var $target = $(selector)
 
@@ -97,8 +101,12 @@
       var $this = $(this)
       var data  = $this.data('bs.tab')
 
-      if (!data) $this.data('bs.tab', (data = new Tab(this)))
-      if (typeof option === 'string') data[option]()
+      if (!data) {
+        $this.data('bs.tab', (data = new Tab(this)))
+      }
+      if (typeof option === 'string') {
+        data[option]()
+      }
     })
   }
 

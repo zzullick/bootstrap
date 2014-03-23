@@ -17,7 +17,9 @@
     this.init('popover', element, options)
   }
 
-  if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
+  if (!$.fn.tooltip) {
+    throw new Error('Popover requires tooltip.js')
+  }
 
   Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
     placement: 'right',
@@ -52,7 +54,9 @@
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
-    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
+    if (!$tip.find('.popover-title').html()) {
+      $tip.find('.popover-title').hide()
+    }
   }
 
   Popover.prototype.hasContent = function () {
@@ -74,7 +78,9 @@
   }
 
   Popover.prototype.tip = function () {
-    if (!this.$tip) this.$tip = $(this.options.template)
+    if (!this.$tip) {
+      this.$tip = $(this.options.template)
+    }
     return this.$tip
   }
 
@@ -90,9 +96,15 @@
       var data    = $this.data('bs.popover')
       var options = typeof option === 'object' && option
 
-      if (!data && option === 'destroy') return
-      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
-      if (typeof option === 'string') data[option]()
+      if (!data && option === 'destroy') {
+        return
+      }
+      if (!data) {
+        $this.data('bs.popover', (data = new Popover(this, options)))
+      }
+      if (typeof option === 'string') {
+        data[option]()
+      }
     })
   }
 

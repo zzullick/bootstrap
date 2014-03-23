@@ -46,7 +46,9 @@
 
     this.$element.trigger(e)
 
-    if (this.isShown || e.isDefaultPrevented()) return
+    if (this.isShown || e.isDefaultPrevented()) {
+      return
+    }
 
     this.isShown = true
 
@@ -92,13 +94,17 @@
   }
 
   Modal.prototype.hide = function (e) {
-    if (e) e.preventDefault()
+    if (e) {
+      e.preventDefault()
+    }
 
     e = $.Event('hide.bs.modal')
 
     this.$element.trigger(e)
 
-    if (!this.isShown || e.isDefaultPrevented()) return
+    if (!this.isShown || e.isDefaultPrevented()) {
+      return
+    }
 
     this.isShown = false
 
@@ -165,17 +171,23 @@
         .appendTo(this.$body)
 
       this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
-        if (e.target !== e.currentTarget) return
+        if (e.target !== e.currentTarget) {
+          return
+        }
         this.options.backdrop === 'static' ?
           this.$element[0].focus.call(this.$element[0]) :
           this.hide.call(this)
       }, this))
 
-      if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
+      if (doAnimate) {
+        this.$backdrop[0].offsetWidth // force reflow
+      }
 
       this.$backdrop.addClass('in')
 
-      if (!callback) return
+      if (!callback) {
+        return
+      }
 
       doAnimate ?
         this.$backdrop
@@ -198,13 +210,17 @@
   }
 
   Modal.prototype.checkScrollbar = function () {
-    if (document.body.clientWidth >= window.innerWidth) return
+    if (document.body.clientWidth >= window.innerWidth) {
+      return
+    }
     this.scrollbarWidth = this.scrollbarWidth || this.measureScrollbar()
   }
 
   Modal.prototype.setScrollbar =  function () {
     var bodyPad = parseInt(this.$body.css('padding-right') || 0)
-    if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    if (this.scrollbarWidth) {
+      this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    }
   }
 
   Modal.prototype.resetScrollbar = function () {
@@ -232,9 +248,14 @@
       var data    = $this.data('bs.modal')
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option === 'object' && option)
 
-      if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
-      if (typeof option === 'string') data[option](_relatedTarget)
-      else if (options.show) data.show(_relatedTarget)
+      if (!data) {
+        $this.data('bs.modal', (data = new Modal(this, options)))
+      }
+      if (typeof option === 'string') {
+        data[option](_relatedTarget)
+      } else if (options.show) {
+        data.show(_relatedTarget)
+      }
     })
   }
 
@@ -259,7 +280,9 @@
     var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
     var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
-    if ($this.is('a')) e.preventDefault()
+    if ($this.is('a')) {
+      e.preventDefault()
+    }
 
     $target
       .modal(option, this)

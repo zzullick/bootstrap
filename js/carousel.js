@@ -57,10 +57,16 @@
     var that        = this
     var activeIndex = this.getActiveIndex()
 
-    if (pos > (this.$items.length - 1) || pos < 0) return
+    if (pos > (this.$items.length - 1) || pos < 0) {
+      return
+    }
 
-    if (this.sliding)        return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid". not a typo. past tense of "to slide".
-    if (activeIndex === pos) return this.pause().cycle()
+    if (this.sliding) {
+      return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid". not a typo. past tense of "to slide".
+    }
+    if (activeIndex === pos) {
+      return this.pause().cycle()
+    }
 
     return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
   }
@@ -79,12 +85,16 @@
   }
 
   Carousel.prototype.next = function () {
-    if (this.sliding) return
+    if (this.sliding) {
+      return
+    }
     return this.slide('next')
   }
 
   Carousel.prototype.prev = function () {
-    if (this.sliding) return
+    if (this.sliding) {
+      return
+    }
     return this.slide('prev')
   }
 
@@ -97,15 +107,21 @@
     var that      = this
 
     if (!$next.length) {
-      if (!this.options.wrap) return
+      if (!this.options.wrap) {
+        return
+      }
       $next = this.$element.find('.item')[fallback]()
     }
 
-    if ($next.hasClass('active')) return (this.sliding = false)
+    if ($next.hasClass('active')) {
+      return (this.sliding = false)
+    }
 
     var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
     this.$element.trigger(e)
-    if (e.isDefaultPrevented()) return
+    if (e.isDefaultPrevented()) {
+      return
+    }
 
     this.sliding = true
 
@@ -157,10 +173,16 @@
       var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option === 'object' && option)
       var action  = typeof option === 'string' ? option : options.slide
 
-      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
-      if (typeof option === 'number') data.to(option)
-      else if (action) data[action]()
-      else if (options.interval) data.pause().cycle()
+      if (!data) {
+        $this.data('bs.carousel', (data = new Carousel(this, options)))
+      }
+      if (typeof option === 'number') {
+        data.to(option)
+      } else if (action) {
+        data[action]()
+      } else if (options.interval) {
+        data.pause().cycle()
+      }
     })
   }
 
@@ -185,7 +207,9 @@
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
     var options = $.extend({}, $target.data(), $this.data())
     var slideIndex = $this.attr('data-slide-to')
-    if (slideIndex) options.interval = false
+    if (slideIndex) {
+      options.interval = false
+    }
 
     $target.carousel(options)
 

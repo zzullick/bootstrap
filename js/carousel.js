@@ -101,7 +101,7 @@
       $next = this.$element.find('.item')[fallback]()
     }
 
-    if ($next.hasClass('active')) return this.sliding = false
+    if ($next.hasClass('active')) return (this.sliding = false)
 
     var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
     this.$element.trigger(e)
@@ -189,7 +189,7 @@
 
     $target.carousel(options)
 
-    if (slideIndex = $this.attr('data-slide-to')) {
+    if (slideIndex) {
       $target.data('bs.carousel').to(slideIndex)
     }
 

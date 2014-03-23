@@ -3,6 +3,7 @@
   "browser"  : true,
   "devel"    : true,
   "eqeqeq"   : true,
+  "es3"      : true,
   "expr"     : true,
   "forin"    : true,
   "jquery"   : true,

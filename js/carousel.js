@@ -23,9 +23,11 @@
     this.$active     =
     this.$items      = null
 
-    this.options.pause === 'hover' && this.$element
-      .on('mouseenter', $.proxy(this.pause, this))
-      .on('mouseleave', $.proxy(this.cycle, this))
+    if (this.options.pause === 'hover') {
+      this.$element
+        .on('mouseenter', $.proxy(this.pause, this))
+        .on('mouseleave', $.proxy(this.cycle, this))
+    }
   }
 
   Carousel.DEFAULTS = {
@@ -35,13 +37,17 @@
   }
 
   Carousel.prototype.cycle =  function (e) {
-    e || (this.paused = false)
+    if (!e) {
+      this.paused = false
+    }
 
-    this.interval && clearInterval(this.interval)
+    if (this.interval) {
+      clearInterval(this.interval)
+    }
 
-    this.options.interval &&
-      !this.paused &&
-      (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+    if (this.options.interval && !this.paused) {
+      this.interval = setInterval($.proxy(this.next, this), this.options.interval)
+    }
 
     return this
   }
@@ -72,7 +78,9 @@
   }
 
   Carousel.prototype.pause = function (e) {
-    e || (this.paused = true)
+    if (!e) {
+      this.paused = true
+    }
 
     if (this.$element.find('.next, .prev').length && $.support.transition) {
       this.$element.trigger($.support.transition.end)
@@ -125,13 +133,17 @@
 
     this.sliding = true
 
-    isCycling && this.pause()
+    if (isCycling) {
+      this.pause()
+    }
 
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
       this.$element.one('slid.bs.carousel', function () { // yes, "slid". not a typo. past tense of "to slide".
         var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
-        $nextIndicator && $nextIndicator.addClass('active')
+        if ($nextIndicator) {
+          $nextIndicator.addClass('active')
+        }
       })
     }
 
@@ -155,7 +167,9 @@
       this.$element.trigger('slid.bs.carousel') // yes, "slid". not a typo. past tense of "to slide".
     }
 
-    isCycling && this.cycle()
+    if (isCycling) {
+      this.cycle()
+    }
 
     return this
   }

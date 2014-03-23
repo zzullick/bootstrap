@@ -54,7 +54,9 @@
         return
       }
       actives.collapse('hide')
-      hasData || actives.data('bs.collapse', null)
+      if (!hasData) {
+        actives.data('bs.collapse', null)
+      }
     }
 
     var dimension = this.dimension()

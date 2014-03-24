@@ -9,7 +9,7 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
-!(function ($) {
+(function ($) {
   'use strict';
 
   $(function () {

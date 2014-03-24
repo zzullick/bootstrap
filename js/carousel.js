@@ -36,7 +36,7 @@
     wrap: true
   }
 
-  Carousel.prototype.cycle =  function (e) {
+  Carousel.prototype.cycle = function (e) {
     if (!e) {
       this.paused = false
     }

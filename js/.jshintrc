@@ -4,13 +4,11 @@
   "devel"    : true,
   "eqeqeq"   : true,
   "es3"      : true,
-  "expr"     : true,
   "forin"    : true,
   "jquery"   : true,
   "latedef"  : true,
   "nonbsp"   : true,
   "strict"   : true,
   "undef"    : true,
-  "unused"   : true,
-  "validthis": true
+  "unused"   : true
 }

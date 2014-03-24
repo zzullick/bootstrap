@@ -102,7 +102,9 @@
 
     var dimension = this.dimension()
 
+    /* jshint ignore:start */
     this.$element[dimension](this.$element[dimension]())[0].offsetHeight
+    /* jshint ignore:end */
 
     this.$element
       .addClass('collapsing')

@@ -68,7 +68,9 @@
       element.addClass('active')
 
       if (transition) {
+        /* jshint ignore:start */
         element[0].offsetWidth // reflow for transition
+        /* jshint ignore:end */
         element.addClass('in')
       } else {
         element.removeClass('fade')

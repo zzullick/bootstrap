@@ -63,7 +63,9 @@
         .addClass('collapse in')
         [dimension]('auto')
       this.transitioning = 0
-      this.$element.trigger('shown.bs.collapse')
+      this.$element
+        .off($.support.transition.end + 'bs.collapse')
+        .trigger('shown.bs.collapse')
     }
 
     if (!$.support.transition) return complete.call(this)
@@ -71,7 +73,7 @@
     var scrollSize = $.camelCase(['scroll', dimension].join('-'))
 
     this.$element
-      .one($.support.transition.end, $.proxy(complete, this))
+      .on($.support.transition.end + 'bs.collapse', $.proxy(complete, this))
       .emulateTransitionEnd(350)
       [dimension](this.$element[0][scrollSize])
   }
